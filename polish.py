@@ -3,12 +3,12 @@ import re
 
 def polish(input):
     
-    ouput = []
+    output = []
     stack = []
 
     for t in tokenize(input):
         if t == "+":
-            output.append(t)
+            stack.append(t)
         elif t == "*":
             pass
         elif t == "(":
@@ -17,6 +17,8 @@ def polish(input):
             pass
         else:
             output.append(t)
+    while len(stack) > 0:
+        output.append(stack.pop())
 
     return "".join(output)
 
