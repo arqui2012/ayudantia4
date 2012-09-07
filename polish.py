@@ -8,15 +8,17 @@ def polish(input):
 
     for t in tokenize(input):
         if t == "+":
-            while len(stack) > 0 and stack[-1] != "+":
+            while len(stack) > 0 and stack[-1] == "*":
                 output.append(stack.pop())
             stack.append(t)
         elif t == "*":
             stack.append(t)
         elif t == "(":
-            pass
+            stack.append(t)
         elif t == ")":
-            pass
+            while stack[-1] != "(":
+                output.append(stack.pop())
+            stack.pop()
         else:
             output.append(t)
     while len(stack) > 0:
