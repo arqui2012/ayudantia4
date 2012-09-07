@@ -36,9 +36,3 @@ class TestPolisher(unittest.TestCase):
         self.assertEquals(polish.polish("(A + B) * C"), "AB+C*")
     def test_complex(self):
         self.assertEquals(polish.polish("(A + B) * (B + C * F)"), "AB+BCF*+*")
-
-    def failed_test(self):
-        self.fail()
-
-if __name__ == '__main__':
-    unittest.main(verbosity=2)
